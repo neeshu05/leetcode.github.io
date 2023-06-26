@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="getPhone" type="phone-number" placeholder = '(738) 973-9870'>
+
+    <script>
+
+        function formatPhoneNumber(value){
+            let digitsOnly = value.replace(/\D/g, '');
+            if (digitsOnly.length <= 3){
+                return digitsOnly;
+            }
+            else if (digitsOnly.length > 3 && digitsOnly.length <= 6){
+                ans = ''
+                ans = '(' + digitsOnly.slice(0,3) + ')' +  ' ' + digitsOnly.slice(3,6)
+            }
+            else{
+                ans = ''
+                ans += '(' + digitsOnly.slice(0,3) + ')' + ' ' + digitsOnly.slice(3,6) + '-' +  digitsOnly.slice(6) 
+            }
+
+            digitsOnly = ans
+            return ans;
+
+        }
+        const Input = document.getElementById('getPhone');
+        Input.addEventListener('input', function (event) {
+            const currentValue = event.target.value;
+            const formattedPhoneNumber = formatPhoneNumber(currentValue);
+            event.target.value = formattedPhoneNumber;
+        });
+
+    </script>
+</body>
+</html>
